@@ -8,27 +8,28 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverManager extends Utils
 {
+    //By creating instance of LoadProp,all test data can be accessed from TestDataProperties file
     LoadProp loadProp = new LoadProp();
-    String browserName = "Chrome";
+
     public void openBrowser(){
-        if(browserName.equalsIgnoreCase("Chrome"))
+        if(loadProp.getProperty("browserName").equalsIgnoreCase("Chrome"))
         {
             //open the browser
             driver = new ChromeDriver();
         }
-        else if (browserName.equalsIgnoreCase("firefox"))
+        else if (loadProp.getProperty("browserName").equalsIgnoreCase("firefox"))
         {
             //open the browser
             driver = new FirefoxDriver();
         }
-        else if (browserName.equalsIgnoreCase("edge"))
+        else if (loadProp.getProperty("browserName").equalsIgnoreCase("edge"))
         {
             //open the browser
             driver = new EdgeDriver();
         }
         else
         {
-            System.out.println("Browser name is wrong or not implemented : "+browserName);
+            System.out.println("Browser name is wrong or not implemented : "+loadProp.getProperty("browserName"));
         }
 
         //open url
